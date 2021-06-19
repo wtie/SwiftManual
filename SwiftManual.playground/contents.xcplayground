@@ -8,5 +8,6 @@
         <page name='Set'/>
         <page name='Nseted Function'/>
         <page name='Optional Chaining'/>
+        <page name='Type'/>
     </pages>
 </playground>
