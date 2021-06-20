@@ -9,5 +9,17 @@
         <page name='Nseted Function'/>
         <page name='Optional Chaining'/>
         <page name='Type'/>
+        <page name='Nested Types'/>
+        <page name='Class vs Structure'/>
+        <page name='For'/>
+        <page name='Switch'/>
+        <page name='Subscripts'/>
+        <page name='Extension'/>
+        <page name='Initialization'/>
+        <page name='Extension Methods'/>
+        <page name='Extension Subscripts'/>
+        <page name='Escaping Closures'/>
+        <page name='Escaping Closures Struct'/>
+        <page name='AutoClosure'/>
     </pages>
 </playground>

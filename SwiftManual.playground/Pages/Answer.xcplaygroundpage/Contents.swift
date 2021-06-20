@@ -99,6 +99,143 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 //: 1. 如果你想通过可选链得到一个 Int 类型的值，那么总会返回一个可选类型的值 Int？，无论可选链有几层。
 //: 2. 如果你想通过可选链得到一个 Int? 类型的值，那么总会返回一个可选类型的值 Int？，无论可选链有几层。
 
+//: - Experiment:
+//: 有一个 Any 类型的数组，如何加入一个 optional 类型的值？
 
+var things = [Any]()
+let optionalNumber: Int? = 3
+things.append(optionalNumber as Any)
 
+//: Any 可以表达任意类型的实例，包括函数类型 function
+//: AnyObject 可以表达任意类的类实例
+
+//: - Experiment:
+//: Classes 和 Structure 有很多的共同与不同的地方，请说出 6 个共同和5个不同的地方来
+
+//: 共同：属性、方法、下标、初始化函数、扩展、协议
+//：不同：classes 比 Structure 多了继承、类型转换、析构、引用计数，classes 是引用类型，structure 是值类型
+
+//: - Experiment:
+//: 时钟的表盘每隔5分钟展示一个数字，请是用 for - in 构造这个数字[5,...60]数组
+let minutes = 60
+let minuteInterval = 5
+var tickMarkArray = [Int]()
+for tickMark in stride(from: minuteInterval, through: minutes , by: minuteInterval) {
+    tickMarkArray.append(tickMark)
+}
+
+print(tickMarkArray)
+
+//: - Experiment:
+//: 下面语句输出什么内容：
+
+let somePoint = (1,1)
+
+switch somePoint {
+case (0,0):
+    print("1. \(somePoint) is at the origin")
+case (0,_):
+    print("2. \(somePoint) is on the x-axis")
+case (_,0):
+    print("3. \(somePoint) is on the y-axis")
+case (-2...2,-2...2):
+    print("4. \(somePoint) is inside the box")
+default:
+    print("5. \(somePoint) is outside of the box")
+}
+
+//: - Experiment:
+//: 银河系有8大行星，请补充代码使我们可以使用下标的方式访问行星。
+
+enum Planet: Int {
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+    
+    static subscript(n: Int) -> Planet {
+        return Planet(rawValue: n)!
+    }
+}
+let mars = Planet[4]
+print(mars)
+
+//: - Experiment:
+//: 为类型添加了 Extensions， 可以覆盖原有的功能吗？
+
+//: 不能
+
+//: - Experiment:
+//: 给 Int 类型添加一个方法 square，求得每一个值的平方
+
+extension Int {
+    mutating func square(){
+        self = self * self
+    }
+}
+
+var someInt = 3
+someInt.square()
+print(someInt)
+
+//: - Experiment:
+//: 写一个函数，下标[n]返回数字右侧的第n位数字。
+//: 12345678[0] = 8
+//: 12345678[1] = 7
+
+extension Int {
+    subscript(digitIndex: Int) -> Int {
+        var decimalBase = 1
+        for _ in 0..<digitIndex {
+            decimalBase *= 10
+        }
+        return (self / decimalBase) % 10
+    }
+}
+
+//: - Experiment:
+//: 补充 doSomething 函数内的代码，可以使下方的两个 print 输出正确的值
+var completionHandlers = [() -> Void]()
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+
+func someFunctionWithNonescapingClosure(closure: () -> Void) {
+    closure()
+}
+
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure {
+            self.x = 100
+        }
+        someFunctionWithNonescapingClosure {
+            x = 200
+        }
+    }
+}
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+// Prints "200"
+
+completionHandlers.first?()
+print(instance.x)
+// Prints "100”
 //: [Next](@next)
+
+//: - Experiment:
+//: 解开第17行的注释，修改函数使函数内打印出 Prints 的值。
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+
+func serve(customer customerProvider: () -> String) {
+    print("Now serving \(customerProvider()) !")
+}
+
+serve(customer: {customersInLine.remove(at: 0)})
+// Prints "Now serving Chris !"
+
+func otherServe(customer customerProvider: @autoclosure () -> String) {
+    print("Now other serving \(customerProvider()) !")
+}
+
+otherServe(customer: customersInLine.remove(at: 0))
+// Prints "Now other serving Alex !"
