@@ -273,3 +273,36 @@ func otherServe(customer customerProvider: @autoclosure () -> String) {
 
 otherServe(customer: customersInLine.remove(at: 0))
 // Prints "Now other serving Alex !"
+
+//: - Experiment:
+//: 类 Class 有一个父类，同时又实现了一些协议，请问在定义类协议时是放在父类前还是父类后？
+
+//: 父类后
+//class SomeClass: SomeSuperClass, FirstProtocol, AnotherProtocol {
+//
+//}
+
+//: - Experiment:
+//: 类 SubClass 有一个父类,父类定义了init，同时又实现了协议SomeProtocol，协议类定义了 init，请问 SubClass 的init 函数前面应该使用什么关键字呢？
+protocol SomeProtocol {
+    init()
+}
+
+class SomeSuperClass {
+    init(){
+        
+    }
+}
+
+class SomeSubClass: SomeSuperClass, SomeProtocol {
+     required override init() {
+
+    }
+}
+
+//: - Experiment:
+//: 举一些例子表明 protocol 在 Swift 中可以作为类型使用
+
+//: 1. 在函数、方法或初始化函数中作为参数类型、返回值类型
+//: 2. 作为常量、变量和属性的类型
+//: 3. 可以在 Array、Dictionary 或者其他容器内作为子元素

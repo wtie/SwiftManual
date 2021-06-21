@@ -10,5 +10,21 @@
         <page name='Optional Chaining'/>
         <page name='Error Handling'/>
         <page name='Error Handling Defer'/>
+        <page name='AutoClosure'/>
+        <page name='Class vs Structure'/>
+        <page name='Escaping Closures Struct'/>
+        <page name='Escaping Closures'/>
+        <page name='Extension Methods'/>
+        <page name='Extension Subscripts'/>
+        <page name='Extension'/>
+        <page name='For'/>
+        <page name='Initialization'/>
+        <page name='Nested Types'/>
+        <page name='Subscripts'/>
+        <page name='Switch'/>
+        <page name='Type'/>
+        <page name='Protocols'/>
+        <page name='Protocols init'/>
+        <page name='Protocols Type'/>
     </pages>
 </playground>
