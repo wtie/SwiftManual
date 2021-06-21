@@ -8,5 +8,7 @@
         <page name='Set'/>
         <page name='Nseted Function'/>
         <page name='Optional Chaining'/>
+        <page name='Error Handling'/>
+        <page name='Error Handling Defer'/>
     </pages>
 </playground>

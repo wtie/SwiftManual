@@ -99,6 +99,39 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 //: 1. 如果你想通过可选链得到一个 Int 类型的值，那么总会返回一个可选类型的值 Int？，无论可选链有几层。
 //: 2. 如果你想通过可选链得到一个 Int? 类型的值，那么总会返回一个可选类型的值 Int？，无论可选链有几层。
 
+//: - Experiment:
+//: 下面的程序 try vendingMachine.vend(itemName: snackName) 编译报错，请使用多种方式解决
 
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinsNeeded: Int)
+    case outOfStock
+}
+
+class VendingMachine {
+    func vend(itemName name:String) throws {
+        guard name.hasPrefix("A") else { throw VendingMachineError.invalidSelection }
+        // 其他事件抛出异常省略
+    }
+}
+
+let favoriteSnacks = ["Alice": "Chips", "Bob": "Licorice", "Eve": "Pretzels"]
+// 第一种：在函数内处理捕获的异常
+func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) {
+    let snackName = favoriteSnacks[person] ?? "Candy Bar"
+    do {
+        try vendingMachine.vend(itemName: snackName)
+    } catch  {
+        print("error")
+    }
+}
+// 第二种：使用 throw 函数把异常传递出去
+//func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
+//    let snackName = favoriteSnacks[person] ?? "Candy Bar"
+//    try vendingMachine.vend(itemName: snackName)
+//
+//}
+
+//: 只有 throws 函数可以传递异常错误。如果异常在非 throws 函数内抛出就必须在函数内处理。
 
 //: [Next](@next)
