@@ -7,8 +7,7 @@ enum Planet: Int {
     // 下标函数
 }
 
-//解注释
-//let mars = Planet[4]
-//print(mars)
+let mars = Planet[4]
+print(mars)
 
 //: [Next](@next)

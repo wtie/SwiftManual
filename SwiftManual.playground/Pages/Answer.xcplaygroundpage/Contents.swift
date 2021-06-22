@@ -306,3 +306,34 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 //: 1. 在函数、方法或初始化函数中作为参数类型、返回值类型
 //: 2. 作为常量、变量和属性的类型
 //: 3. 可以在 Array、Dictionary 或者其他容器内作为子元素
+
+//: - Experiment:
+//: 修改程序使结构体 vector 可以比较是否相等
+
+struct Vector3D: Equatable {
+    var x = 0.0, y = 0.0, z = 0.0
+}
+
+let twoThreeFour = Vector3D(x:2.0, y:3.0, z:4.0)
+let anotherTwoThreeFour = Vector3D(x:2.0, y:3.0, z:4.0)
+if (twoThreeFour == anotherTwoThreeFour){
+    print("这两个 Vector 相同")
+}
+
+//: - Experiment:
+//: 完善 enum SkillLevel,使其具备排序功能
+
+enum SkillLevel: Comparable {
+    case beginner
+    case intermediate
+    case expert(stars: Int)
+}
+
+var levels = [SkillLevel.intermediate, SkillLevel.beginner, SkillLevel.expert(stars: 2), SkillLevel.expert(stars: 5)]
+print(levels.sorted())
+
+//: Swift 为下列自定义类型提供了 Hashable 的实现
+//: 1. 仅存储符合 Hashable 协议属性的 structures
+//: 2. 仅具有关联类型符合 Hashable 协议的 enum
+//: 3. 没有关联类型的 enum
+

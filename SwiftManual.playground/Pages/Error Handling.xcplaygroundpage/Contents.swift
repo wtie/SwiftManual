@@ -1,6 +1,6 @@
 //: [Previous](@previous)
 
-//: 下面的程序 try vendingMachine.vend(itemName: snackName) 编译报错，请使用多种方式解决
+//: 请用两种方式解决下方的异常
 
 enum VendingMachineError: Error {
     case invalidSelection
@@ -15,12 +15,12 @@ class VendingMachine {
     }
 }
 
-//let favoriteSnacks = ["Alice": "Chips", "Bob": "Licorice", "Eve": "Pretzels"]
-//
-//func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) {
-//    let snackName = favoriteSnacks[person] ?? "Candy Bar"
-//    try vendingMachine.vend(itemName: snackName)
-//}
+let favoriteSnacks = ["Alice": "Chips", "Bob": "Licorice", "Eve": "Pretzels"]
+
+func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) {
+    let snackName = favoriteSnacks[person] ?? "Candy Bar"
+    try vendingMachine.vend(itemName: snackName)
+}
 
 
 //: [Next](@next)

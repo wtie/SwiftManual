@@ -2,29 +2,31 @@
 <playground version='6.0' target-platform='ios' display-mode='raw' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='Index'/>
-        <page name='Answer'/>
         <page name='String'/>
-        <page name='Array'/>
+        <page name='For'/>
         <page name='Set'/>
+        <page name='Switch'/>
         <page name='Nseted Function'/>
+        <page name='Subscripts'/>
         <page name='Optional Chaining'/>
         <page name='Error Handling'/>
-        <page name='Error Handling Defer'/>
+        <page name='Array'/>
         <page name='AutoClosure'/>
         <page name='Class vs Structure'/>
-        <page name='Escaping Closures Struct'/>
         <page name='Escaping Closures'/>
+        <page name='Escaping Closures Struct'/>
+        <page name='Extension'/>
         <page name='Extension Methods'/>
         <page name='Extension Subscripts'/>
-        <page name='Extension'/>
-        <page name='For'/>
-        <page name='Initialization'/>
-        <page name='Nested Types'/>
-        <page name='Subscripts'/>
-        <page name='Switch'/>
         <page name='Type'/>
         <page name='Protocols'/>
         <page name='Protocols init'/>
         <page name='Protocols Type'/>
+        <page name='Protocols Equatable'/>
+        <page name='Protocols Comparable'/>
+        <page name='Answer'/>
+        <page name='Initialization'/>
+        <page name='Nested Types'/>
+        <page name='Enum'/>
     </pages>
 </playground>
