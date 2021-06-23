@@ -1,5 +1,7 @@
 //: [Previous](@previous)
 
+//: 完善下方程序
+
 enum ArithmeticExpression {
     case number(Int)
     case addition(ArithmeticExpression, ArithmeticExpression)
